@@ -28,35 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.PDFPrtbtn = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.FieldName = new System.Windows.Forms.TextBox();
+            this.FileName = new System.Windows.Forms.TextBox();
+            this.btnPdfPrt = new System.Windows.Forms.Button();
+            this.btnFdName = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // lblName
             // 
-            this.textBox1.Location = new System.Drawing.Point(216, 59);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 35);
-            this.textBox1.TabIndex = 1;
+            this.lblName.AutoSize = true;
+            this.lblName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblName.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblName.Location = new System.Drawing.Point(202, 87);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(58, 15);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "Name : ";
             // 
-            // PDFPrtbtn
+            // FieldName
             // 
-            this.PDFPrtbtn.Location = new System.Drawing.Point(502, 59);
-            this.PDFPrtbtn.Name = "PDFPrtbtn";
-            this.PDFPrtbtn.Size = new System.Drawing.Size(117, 53);
-            this.PDFPrtbtn.TabIndex = 3;
-            this.PDFPrtbtn.Text = "출력";
-            this.PDFPrtbtn.UseVisualStyleBackColor = true;
-            this.PDFPrtbtn.Click += new System.EventHandler(this.button3_Click);
+            this.FieldName.Location = new System.Drawing.Point(26, 87);
+            this.FieldName.Multiline = true;
+            this.FieldName.Name = "FieldName";
+            this.FieldName.Size = new System.Drawing.Size(159, 259);
+            this.FieldName.TabIndex = 5;
+            // 
+            // FileName
+            // 
+            this.FileName.Location = new System.Drawing.Point(266, 87);
+            this.FileName.Name = "FileName";
+            this.FileName.Size = new System.Drawing.Size(165, 21);
+            this.FileName.TabIndex = 6;
+            // 
+            // btnPdfPrt
+            // 
+            this.btnPdfPrt.Location = new System.Drawing.Point(333, 114);
+            this.btnPdfPrt.Name = "btnPdfPrt";
+            this.btnPdfPrt.Size = new System.Drawing.Size(98, 23);
+            this.btnPdfPrt.TabIndex = 7;
+            this.btnPdfPrt.Text = "PC에저장";
+            this.btnPdfPrt.UseVisualStyleBackColor = true;
+            this.btnPdfPrt.Click += new System.EventHandler(this.btnPdfPrt_Click);
+            // 
+            // btnFdName
+            // 
+            this.btnFdName.Location = new System.Drawing.Point(89, 352);
+            this.btnFdName.Name = "btnFdName";
+            this.btnFdName.Size = new System.Drawing.Size(96, 23);
+            this.btnFdName.TabIndex = 8;
+            this.btnFdName.Text = "조회";
+            this.btnFdName.UseVisualStyleBackColor = true;
+            this.btnFdName.Click += new System.EventHandler(this.btnFdName_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.PDFPrtbtn);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(491, 427);
+            this.Controls.Add(this.btnFdName);
+            this.Controls.Add(this.btnPdfPrt);
+            this.Controls.Add(this.FileName);
+            this.Controls.Add(this.FieldName);
+            this.Controls.Add(this.lblName);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -65,8 +100,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button PDFPrtbtn;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox FieldName;
+        private System.Windows.Forms.TextBox FileName;
+        private System.Windows.Forms.Button btnPdfPrt;
+        private System.Windows.Forms.Button btnFdName;
     }
 }
 

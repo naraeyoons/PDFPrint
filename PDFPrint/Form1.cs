@@ -23,38 +23,50 @@ namespace PDFPrint
             InitializeComponent();
         }
 
-        private void FillForm( string s)
+        private void btnPdfPrt_Click(object sender, EventArgs e)
         {
-            //원본 PDF 경로
+            if (FileName.Text == "")
+                MessageBox.Show("파일명을 입력해주세요.");
+            else
+                FillForm();
+        }
+
+        private void btnFdName_Click(object sender, EventArgs e)
+        {
+            ListFieldNames();
+        }
+        // PDF Form 채우기 
+        private void FillForm()
+        {
+            // 원본 PDF 경로
             string pdfTemplate = @"C:\Users\naraeyoon\source\repos\PDFPrint\PDFPrint\PDF\Form1.pdf";
-            // 원본에 수정되어 저장될 경로
-            string newFile = @"C:\\Users\naraeyoon\source\repos\PDFPrint\PDFPrint\PDF\Form4.pdf";
 
-            //원본 PDF 읽기
+            // * 생성된 PDF가 저장될 경로
+            string newFile = @"C:\Users\naraeyoon\source\repos\PDFPrint\PDFPrint\PDF\" + FileName.Text + ".pdf";
+            
+
+            // * 원본 PDF 읽기
             PdfReader pdfReader = new PdfReader(pdfTemplate);
-            //원본 PDF와 저장될 위치
-            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
-            StringBuilder sb = new StringBuilder();
-            foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
-            {
-                pdfStamper.AcroFields.SetFieldProperty(de.Key.ToString(), "setfflags", PdfFormField.FF_READ_ONLY, null);
-            }
 
+            // * 원본 PDF 문서에 컨텐츠를 추가하는 프로세스 시작 (원본PDF, 저장될 위치)
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
+        
             //PDFStamper
             AcroFields pdfFormFields = pdfStamper.AcroFields;
 
             // form pdfFormFields 세팅
             pdfFormFields.SetField("prjTitle", "SteelFiber");
             pdfFormFields.SetField("location", "US East(N. Virginia)");
-   
-            // report by reading values from completed PDF
+            
+            // 필드를 ReadOnly로 설정
+            foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
+            {
+                pdfStamper.AcroFields.SetFieldProperty(de.Key.ToString(), "setfflags", PdfFormField.FF_READ_ONLY, null);
+            }
 
-            string sTmp = "저장";
-
+            string sTmp = "저장이 완료되었습니다.";
             MessageBox.Show(sTmp, "Finished");
-            // flatten the form to remove editting options, set it to false
-            // to leave the form open to subsequent manual edits2
-            //pdfStamper.AcroFields.SetFieldProperty("prjTitle", "setfflags", PdfFormField.FF_READ_ONLY, null);
+            
             pdfStamper.FormFlattening = false;
 
             // close the pdf
@@ -62,45 +74,18 @@ namespace PDFPrint
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Document doc = new Document(iTextSharp.text.PageSize.LETTER);
-            PdfWriter Wr = PdfWriter.GetInstance(doc, new FileStream("simple.pdf", FileMode.Create));
-
-            // Documenet에 내용쓰기
-            doc.Open();
-            doc.AddTitle("Simple PDF 생성");
-            doc.AddAuthor("Narae");
-            doc.AddCreationDate();
-            doc.Add(new Paragraph("English : How are you?"));
-
-            string batangttf = System.IO.Path.Combine(Environment.GetEnvironmentVariable("SystemRoot"), @"Fonts\malgun.TTF");
-            BaseFont batangBase = BaseFont.CreateFont(batangttf, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-
-            var batang = new iTextSharp.text.Font(batangBase, 12F);
-            doc.Add(new Paragraph("한글: 안녕하세요?", batang));
-
-            doc.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FillForm(textBox1.Text);
-        }
 
         private void ListFieldNames()
 
         {
-            string pdfTemplate = @"C:\Users\JayChoi\source\repos\pdfTest\pdfTest\aa.pdf";
+            string pdfTemplate = @"C:\Users\naraeyoon\source\repos\PDFPrint\PDFPrint\PDF\Form1.pdf";
 
             // title the form
             this.Text += " - " + pdfTemplate;
 
             // PDF 양식
             PdfReader pdfReader = new PdfReader(pdfTemplate);
-
-            // create and populate a string builder with each of the 
-            // field names available in the subject PDF
+            
             StringBuilder sb = new StringBuilder();
             // 필드이름들
             foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
@@ -109,9 +94,10 @@ namespace PDFPrint
             }
 
             // 텍스트박스에 보여주기
-            textBox1.Text = sb.ToString();
-            textBox1.SelectionStart = 0;
+            FieldName.Text = sb.ToString();
+            FieldName.SelectionStart = 0;
         }
+
 
     }
 }
