@@ -28,59 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.PDFPrtbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(328, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 53);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 66);
+            this.textBox1.Location = new System.Drawing.Point(216, 59);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 320);
+            this.textBox1.Size = new System.Drawing.Size(267, 35);
             this.textBox1.TabIndex = 1;
             // 
-            // button2
+            // PDFPrtbtn
             // 
-            this.button2.Location = new System.Drawing.Point(328, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 53);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Create";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(328, 184);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 53);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "FormField";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.PDFPrtbtn.Location = new System.Drawing.Point(502, 59);
+            this.PDFPrtbtn.Name = "PDFPrtbtn";
+            this.PDFPrtbtn.Size = new System.Drawing.Size(117, 53);
+            this.PDFPrtbtn.TabIndex = 3;
+            this.PDFPrtbtn.Text = "출력";
+            this.PDFPrtbtn.UseVisualStyleBackColor = true;
+            this.PDFPrtbtn.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.PDFPrtbtn);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -89,11 +65,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button PDFPrtbtn;
     }
 }
 

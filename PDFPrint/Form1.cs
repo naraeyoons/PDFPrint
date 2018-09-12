@@ -23,31 +23,6 @@ namespace PDFPrint
             InitializeComponent();
         }
 
-        private void ListFieldNames()
-
-        {
-            string pdfTemplate = @"C:\Users\JayChoi\source\repos\pdfTest\pdfTest\aa.pdf";
-
-            // title the form
-            this.Text += " - " + pdfTemplate;
-
-            // PDF 양식
-            PdfReader pdfReader = new PdfReader(pdfTemplate);
-
-            // create and populate a string builder with each of the 
-            // field names available in the subject PDF
-            StringBuilder sb = new StringBuilder();
-            // 필드이름들
-            foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
-            {
-                sb.Append(de.Key.ToString() + Environment.NewLine);
-            }
-
-            // 텍스트박스에 보여주기
-            textBox1.Text = sb.ToString();
-            textBox1.SelectionStart = 0;
-        }
-
         private void FillForm( string s)
         {
             //원본 PDF 경로
@@ -112,9 +87,31 @@ namespace PDFPrint
         {
             FillForm(textBox1.Text);
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void ListFieldNames()
+
         {
-            FillForm(textBox1.Text);
+            string pdfTemplate = @"C:\Users\JayChoi\source\repos\pdfTest\pdfTest\aa.pdf";
+
+            // title the form
+            this.Text += " - " + pdfTemplate;
+
+            // PDF 양식
+            PdfReader pdfReader = new PdfReader(pdfTemplate);
+
+            // create and populate a string builder with each of the 
+            // field names available in the subject PDF
+            StringBuilder sb = new StringBuilder();
+            // 필드이름들
+            foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
+            {
+                sb.Append(de.Key.ToString() + Environment.NewLine);
+            }
+
+            // 텍스트박스에 보여주기
+            textBox1.Text = sb.ToString();
+            textBox1.SelectionStart = 0;
         }
+
     }
 }
